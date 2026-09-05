@@ -3,7 +3,7 @@
 import { useMemo, useState } from "react";
 import Link from "next/link";
 import { GamemodeId } from "@/data/gamemodes";
-import { players, avatarUrl, Region } from "@/data/players";
+import { players, bodyUrl, Region } from "@/data/players";
 import { tierOrder, TierId } from "@/data/tiers";
 import TierBadge from "./TierBadge";
 import RegionBadge from "./RegionBadge";
@@ -51,16 +51,23 @@ export default function GamemodeTierlistView({ gamemode }: { gamemode: GamemodeI
                 <div className="h-px flex-1 bg-border-subtle" />
                 <span className="text-xs text-text-muted">{list.length} player{list.length === 1 ? "" : "s"}</span>
               </div>
-              <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-2.5">
+              <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-5 gap-2.5">
                 {list.map((p) => (
                   <Link
                     key={p.username}
                     href={`/profile/${p.username}`}
-                    className="flex items-center gap-2.5 px-3 py-2.5 rounded-2xl border border-border-subtle bg-surface/50 hover:bg-surface hover:border-border-strong transition-colors"
+                    className="flex flex-col items-center text-center gap-1.5 px-3 pt-3 pb-2.5 rounded-2xl border border-border-subtle bg-surface/50 hover:bg-surface hover:border-border-strong transition-colors"
                   >
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img src={avatarUrl(p.username, 32)} alt="" className="w-8 h-8 rounded-lg shrink-0" />
-                    <div className="min-w-0 flex-1">
+                    <div className="relative w-12 h-16 flex items-end justify-center">
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img
+                        src={bodyUrl(p.username, 96)}
+                        alt=""
+                        className="relative z-10 h-full w-auto object-contain drop-shadow-[0_4px_6px_rgba(0,0,0,0.5)]"
+                      />
+                      <div className="absolute bottom-0.5 w-6 h-1.5 rounded-full bg-black/40 blur-[2px]" />
+                    </div>
+                    <div className="min-w-0 w-full">
                       <div className="text-sm font-medium truncate">{p.username}</div>
                     </div>
                     <RegionBadge region={p.region} />

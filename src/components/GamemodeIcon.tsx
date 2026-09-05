@@ -49,6 +49,28 @@ const paths: Record<string, React.ReactNode> = {
       <path d="M9 15h6v3l-2 2h-2l-2-2z" fill="currentColor" stroke="none" />
     </>
   ),
+  mace: (
+    <>
+      <path d="M12 2.5l2 2-2 2-2-2z" fill="currentColor" stroke="none" />
+      <rect x="8.5" y="6" width="7" height="6.5" rx="1.5" strokeLinejoin="round" />
+      <path d="M10.5 9h3M12 7.5v3.5" strokeLinecap="round" />
+      <path d="M12 12.5V20" strokeLinecap="round" />
+      <path d="M9 20h6" strokeLinecap="round" />
+    </>
+  ),
+  crystal: (
+    <>
+      <path d="M12 3l5 4.2-2.1 10L12 21l-2.9-3.8L7 7.2z" strokeLinejoin="round" />
+      <path d="M12 3v18M7 7.2h10M9.1 17.2h5.8" strokeLinecap="round" />
+    </>
+  ),
+  spearmace: (
+    <>
+      <path d="M4.5 19.5L15.5 8.5" strokeLinecap="round" />
+      <path d="M15.5 8.5l1.8-1.8 1.8 1.8-1.8 1.8z" strokeLinejoin="round" />
+      <path d="M5.5 18.5l-1.7 1.7" strokeLinecap="round" />
+    </>
+  ),
   trophy: (
     <>
       <path d="M7 4h10v5a5 5 0 0 1-10 0V4z" strokeLinecap="round" strokeLinejoin="round" />

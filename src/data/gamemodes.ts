@@ -1,18 +1,18 @@
 // Central gamemode configuration.
-// This mirrors how the Discord bot's config.js will define gamemodes —
+// This mirrors how the Discord bot's config will define gamemodes —
 // add/remove a gamemode here and it propagates through the whole site
 // (tierlist tabs, profile cards, autocomplete-equivalent selectors, etc).
 
 export type GamemodeId =
-  | "overall"
   | "sword"
   | "axe"
-  | "uhc"
   | "pot"
-  | "nethop"
+  | "mace"
+  | "uhc"
+  | "diasmp"
   | "smp"
-  | "diapot"
-  | "creeper";
+  | "crystal"
+  | "spearmace";
 
 export interface Gamemode {
   id: GamemodeId;
@@ -41,14 +41,6 @@ export const gamemodes: Gamemode[] = [
     description: "Axe combat, favoring high-damage single hits.",
   },
   {
-    id: "uhc",
-    label: "UHC",
-    shortLabel: "UHC",
-    icon: "heart",
-    color: "#D63B5C",
-    description: "No regen, gapple-fueled sword fights.",
-  },
-  {
     id: "pot",
     label: "Pot",
     shortLabel: "POT",
@@ -57,12 +49,28 @@ export const gamemodes: Gamemode[] = [
     description: "Splash potion combat with sword follow-ups.",
   },
   {
-    id: "nethop",
-    label: "NethOP",
-    shortLabel: "NOP",
-    icon: "portal",
-    color: "#7B5CD6",
-    description: "Fully enchanted netherite gear, no cooldowns.",
+    id: "mace",
+    label: "Mace",
+    shortLabel: "MACE",
+    icon: "mace",
+    color: "#B08D57",
+    description: "Wind-charge mace combat built around burst damage.",
+  },
+  {
+    id: "uhc",
+    label: "UHC",
+    shortLabel: "UHC",
+    icon: "heart",
+    color: "#D63B5C",
+    description: "No regen, gapple-fueled sword fights.",
+  },
+  {
+    id: "diasmp",
+    label: "Dia SMP",
+    shortLabel: "DSMP",
+    icon: "diamond",
+    color: "#3FB6D3",
+    description: "Full diamond gear, survival-server style combat.",
   },
   {
     id: "smp",
@@ -73,20 +81,20 @@ export const gamemodes: Gamemode[] = [
     description: "Realistic survival-server gear and combos.",
   },
   {
-    id: "diapot",
-    label: "DiaPot",
-    shortLabel: "DPOT",
-    icon: "diamond",
-    color: "#3FB6D3",
-    description: "Diamond armor potion fights.",
+    id: "crystal",
+    label: "Crystal",
+    shortLabel: "CRYS",
+    icon: "crystal",
+    color: "#C77CF2",
+    description: "End crystal PvP — positioning, timing, and burst damage.",
   },
   {
-    id: "creeper",
-    label: "Creeper",
-    shortLabel: "CRPR",
-    icon: "creeper",
-    color: "#4CAF50",
-    description: "Explosion-aware positioning and sword combat.",
+    id: "spearmace",
+    label: "Spear Mace",
+    shortLabel: "SPMC",
+    icon: "spearmace",
+    color: "#5B7FBF",
+    description: "Mace combat extended with spear-range pole weapons.",
   },
 ];
 
