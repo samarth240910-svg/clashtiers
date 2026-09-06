@@ -1,17 +1,18 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import Link from "next/link";
 import { GamemodeId } from "@/data/gamemodes";
 import { players, bodyUrl, Region } from "@/data/players";
 import { tierOrder, TierId } from "@/data/tiers";
 import TierBadge from "./TierBadge";
 import RegionBadge from "./RegionBadge";
 import TierlistFilters from "./TierlistFilters";
+import ProfilePreviewModal from "./ProfilePreviewModal";
 
 export default function GamemodeTierlistView({ gamemode }: { gamemode: GamemodeId }) {
   const [search, setSearch] = useState("");
   const [region, setRegion] = useState<Region | "ALL">("ALL");
+  const [selected, setSelected] = useState<string | null>(null);
 
   const grouped = useMemo(() => {
     const map = new Map<TierId, { username: string; region: Region }[]>();
@@ -53,25 +54,25 @@ export default function GamemodeTierlistView({ gamemode }: { gamemode: GamemodeI
               </div>
               <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-5 gap-2.5">
                 {list.map((p) => (
-                  <Link
+                  <button
+                    type="button"
                     key={p.username}
-                    href={`/profile/${p.username}`}
-                    className="flex flex-col items-center text-center gap-1.5 px-3 pt-3 pb-2.5 rounded-2xl border border-border-subtle bg-surface/50 hover:bg-surface hover:border-border-strong transition-colors"
+                    onClick={() => setSelected(p.username)}
+                    className="group flex flex-col items-center text-center gap-1.5 px-3 pt-3 pb-2.5 rounded-2xl border border-border-subtle bg-surface/50 hover:bg-surface hover:border-border-strong transition-colors"
                   >
-                    <div className="relative w-12 h-16 flex items-end justify-center">
+                    <div className="relative w-14 h-14 rounded-xl bg-surface-2 ring-1 ring-white/5 overflow-hidden">
                       {/* eslint-disable-next-line @next/next/no-img-element */}
                       <img
                         src={bodyUrl(p.username, 96)}
                         alt=""
-                        className="relative z-10 h-full w-auto object-contain drop-shadow-[0_4px_6px_rgba(0,0,0,0.5)]"
+                        className="absolute left-1/2 top-0 w-auto h-[200%] max-w-none -translate-x-1/2 object-top transition-transform duration-300 ease-out -rotate-6 group-hover:rotate-0 group-hover:scale-110"
                       />
-                      <div className="absolute bottom-0.5 w-6 h-1.5 rounded-full bg-black/40 blur-[2px]" />
                     </div>
                     <div className="min-w-0 w-full">
                       <div className="text-sm font-medium truncate">{p.username}</div>
                     </div>
                     <RegionBadge region={p.region} />
-                  </Link>
+                  </button>
                 ))}
               </div>
             </div>
@@ -82,6 +83,8 @@ export default function GamemodeTierlistView({ gamemode }: { gamemode: GamemodeI
           <div className="py-16 text-center text-sm text-text-muted">No players match your filters.</div>
         )}
       </div>
+
+      <ProfilePreviewModal username={selected} onClose={() => setSelected(null)} />
     </div>
   );
 }

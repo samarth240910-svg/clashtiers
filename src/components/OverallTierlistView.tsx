@@ -4,10 +4,12 @@ import { useMemo, useState } from "react";
 import { rankedPlayers, Region } from "@/data/players";
 import LeaderboardRow from "./LeaderboardRow";
 import TierlistFilters from "./TierlistFilters";
+import ProfilePreviewModal from "./ProfilePreviewModal";
 
 export default function OverallTierlistView() {
   const [search, setSearch] = useState("");
   const [region, setRegion] = useState<Region | "ALL">("ALL");
+  const [selected, setSelected] = useState<string | null>(null);
 
   const filtered = useMemo(() => {
     return rankedPlayers.filter((p) => {
@@ -41,11 +43,13 @@ export default function OverallTierlistView() {
           ) : (
             filtered.map((p) => {
               const rank = rankedPlayers.indexOf(p) + 1;
-              return <LeaderboardRow key={p.username} player={p} rank={rank} />;
+              return <LeaderboardRow key={p.username} player={p} rank={rank} onSelect={setSelected} />;
             })
           )}
         </div>
       </div>
+
+      <ProfilePreviewModal username={selected} onClose={() => setSelected(null)} />
     </div>
   );
 }
