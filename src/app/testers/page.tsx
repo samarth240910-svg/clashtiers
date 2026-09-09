@@ -17,9 +17,9 @@ const statusColor: Record<string, string> = {
 };
 
 const podiumStyle: Record<number, string> = {
-  0: "sm:order-2 border-amber/50 shadow-[0_0_40px_rgba(255,182,72,0.18)] sm:scale-105",
-  1: "sm:order-1 border-border-strong",
-  2: "sm:order-3 border-border-strong",
+  0: "sm:order-2 border-amber/50 shadow-[0_0_40px_rgba(255,182,72,0.22)] sm:scale-105 shimmer-wrap",
+  1: "sm:order-1 border-white/20 shadow-[0_0_24px_rgba(199,204,214,0.15)] shimmer-wrap",
+  2: "sm:order-3 border-[#d38a4f]/30 shadow-[0_0_24px_rgba(211,138,79,0.15)] shimmer-wrap",
 };
 
 export default function TestersPage() {

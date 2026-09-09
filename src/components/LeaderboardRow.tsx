@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Player, bodyUrl, playerPoints } from "@/data/players";
+import { Player, avatarUrl, playerPoints } from "@/data/players";
 import { getRankTitle } from "@/data/tiers";
 import { gamemodes } from "@/data/gamemodes";
 import GamemodeTierIcon from "./GamemodeTierIcon";
@@ -20,20 +20,16 @@ export default function LeaderboardRow({
   const tierByGamemode = Object.fromEntries(player.tierList.map((t) => [t.gamemode, t.tier]));
 
   const rowClass =
-    "group grid grid-cols-[auto_auto_1fr_auto_auto] items-center gap-3 sm:gap-4 px-3 sm:px-4 py-2.5 rounded-2xl border border-transparent hover:border-border-subtle hover:bg-surface/70 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-black/20 transition-all duration-300 w-full text-left";
+    "group grid grid-cols-[auto_auto_1fr_auto_auto] items-center gap-3 sm:gap-4 px-3 sm:px-4 py-2.5 rounded-2xl border border-transparent hover:border-amber/25 hover:bg-surface/70 hover:-translate-y-0.5 hover:shadow-[0_8px_28px_rgba(242,193,78,0.1)] transition-all duration-300 w-full text-left";
 
   const content = (
     <>
       <RankPosition rank={rank} />
 
-      {/* Character bust — half-body crop of the isometric render, tilted at rest, straightens + lifts on hover */}
-      <div className="relative w-10 sm:w-12 h-10 sm:h-12 rounded-xl bg-surface-2 ring-1 ring-white/5 overflow-hidden shrink-0">
+      {/* Flat face avatar — simple square, with a soft golden glint ring on hover */}
+      <div className="relative w-10 sm:w-11 h-10 sm:h-11 rounded-xl overflow-hidden shrink-0 ring-1 ring-white/10 transition-all duration-300 group-hover:ring-amber/50 group-hover:shadow-[0_0_16px_rgba(242,193,78,0.4)] group-hover:scale-105">
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          src={bodyUrl(player.username, 96)}
-          alt=""
-          className="absolute left-1/2 top-0 w-auto h-[200%] max-w-none -translate-x-1/2 object-top transition-transform duration-300 ease-out -rotate-6 group-hover:rotate-0 group-hover:scale-110"
-        />
+        <img src={avatarUrl(player.username, 64)} alt="" className="w-full h-full object-cover" />
       </div>
 
       <div className="min-w-0">

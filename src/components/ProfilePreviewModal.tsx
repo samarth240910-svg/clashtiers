@@ -168,7 +168,7 @@ export default function ProfilePreviewModal({
             </Link>
             <button
               onClick={onClose}
-              className="flex-1 bg-gradient-to-r from-red to-amber hover:brightness-110 text-bg text-xs font-bold px-4 py-2.5 rounded-full transition-all"
+              className="flex-1 bg-gradient-to-r from-red to-amber hover:brightness-110 hover:shadow-[0_0_20px_rgba(242,193,78,0.45)] text-bg text-xs font-bold px-4 py-2.5 rounded-full transition-all"
             >
               Close
             </button>

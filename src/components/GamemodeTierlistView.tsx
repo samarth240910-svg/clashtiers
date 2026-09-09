@@ -2,7 +2,7 @@
 
 import { useMemo, useState } from "react";
 import { GamemodeId } from "@/data/gamemodes";
-import { players, bodyUrl, Region } from "@/data/players";
+import { players, avatarUrl, Region } from "@/data/players";
 import { tierOrder, TierId } from "@/data/tiers";
 import TierBadge from "./TierBadge";
 import RegionBadge from "./RegionBadge";
@@ -58,15 +58,11 @@ export default function GamemodeTierlistView({ gamemode }: { gamemode: GamemodeI
                     type="button"
                     key={p.username}
                     onClick={() => setSelected(p.username)}
-                    className="group flex flex-col items-center text-center gap-1.5 px-3 pt-3 pb-2.5 rounded-2xl border border-border-subtle bg-surface/50 hover:bg-surface hover:border-border-strong transition-colors"
+                    className="group flex flex-col items-center text-center gap-1.5 px-3 pt-3 pb-2.5 rounded-2xl border border-border-subtle bg-surface/50 hover:bg-surface hover:border-amber/25 hover:shadow-[0_8px_24px_rgba(242,193,78,0.1)] transition-all duration-300"
                   >
-                    <div className="relative w-14 h-14 rounded-xl bg-surface-2 ring-1 ring-white/5 overflow-hidden">
+                    <div className="relative w-12 h-12 rounded-xl overflow-hidden ring-1 ring-white/10 transition-all duration-300 group-hover:ring-amber/50 group-hover:shadow-[0_0_18px_rgba(242,193,78,0.4)] group-hover:scale-105">
                       {/* eslint-disable-next-line @next/next/no-img-element */}
-                      <img
-                        src={bodyUrl(p.username, 96)}
-                        alt=""
-                        className="absolute left-1/2 top-0 w-auto h-[200%] max-w-none -translate-x-1/2 object-top transition-transform duration-300 ease-out -rotate-6 group-hover:rotate-0 group-hover:scale-110"
-                      />
+                      <img src={avatarUrl(p.username, 64)} alt="" className="w-full h-full object-cover" />
                     </div>
                     <div className="min-w-0 w-full">
                       <div className="text-sm font-medium truncate">{p.username}</div>

@@ -41,7 +41,7 @@ export default function Home() {
             <div className="mt-8 flex flex-col sm:flex-row items-center gap-3">
               <Link
                 href="/tierlist"
-                className="w-full sm:w-auto text-center bg-gradient-to-r from-red to-amber hover:brightness-110 text-bg font-bold px-6 py-3 rounded-full transition-all shadow-lg shadow-red-glow/25"
+                className="w-full sm:w-auto text-center bg-gradient-to-r from-red to-amber hover:brightness-110 hover:shadow-[0_0_28px_rgba(242,193,78,0.45)] text-bg font-bold px-6 py-3 rounded-full transition-all shadow-lg shadow-red-glow/25"
               >
                 View Tierlist
               </Link>
@@ -78,7 +78,7 @@ export default function Home() {
             <Link
               key={g.id}
               href={`/tierlist/${g.id}`}
-              className="group relative border border-border-subtle rounded-3xl bg-surface/60 hover:bg-surface p-5 transition-colors overflow-hidden"
+              className="group relative border border-border-subtle rounded-3xl bg-surface/60 hover:bg-surface hover:border-amber/25 hover:-translate-y-1 hover:shadow-[0_10px_30px_rgba(242,193,78,0.12)] p-5 transition-all duration-300 overflow-hidden"
             >
               <div
                 className="absolute -right-4 -top-4 w-20 h-20 rounded-full blur-2xl opacity-20 group-hover:opacity-35 transition-opacity"
